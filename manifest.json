@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "在线音效",
   "plugin_id": "audio-effect-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "为播放器添加在线音效功能-音效- |钢琴 | 乐器 | 尤克里里 | 唢呐 | DJ | 伴奏 | -其他设置-高潮模式（只播放原曲高潮部分）",
   "moekoe": true,
   "minversion": "1.6.0",
