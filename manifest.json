@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "在线音效",
+  "plugin_id": "audio-effect-plugin",
+  "version": "1.0.0",
+  "description": "为播放器添加在线音效功能-音效- |钢琴 | 乐器 | 尤克里里 | 唢呐 | DJ | 伴奏 | -其他设置-高潮模式（只播放原曲高潮部分）",
+  "moekoe": true,
+  "minversion": "1.6.0",
+  "author": {
+    "name": "且随风",
+    "url": "https://github.com/orgs/MoeKoeMusic/discussions"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js", "*.png", "*.jpg", "*.svg"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  }
+}

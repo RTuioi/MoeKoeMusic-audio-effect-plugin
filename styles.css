@@ -1,0 +1,222 @@
+.aep-btn {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.aep-btn-active {
+  color: var(--primary-color, #ff6600) !important;
+}
+
+.aep-btn-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--primary-color, #ff6600);
+}
+
+.aep-panel {
+  position: fixed;
+  z-index: 10000;
+  width: 280px;
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #e0e0e0;
+  animation: aep-fade-in 0.2s ease;
+}
+
+@keyframes aep-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.aep-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.aep-panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+
+.aep-close-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.aep-close-btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.aep-panel-body {
+  padding: 18px;
+}
+
+.aep-effect-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.aep-effect-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 2px 8px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.aep-effect-item i {
+  font-size: 20px;
+  margin-bottom: 2px;
+  transition: transform 0.15s ease;
+}
+
+.aep-effect-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.aep-effect-item:hover i {
+  transform: scale(1.1);
+}
+
+.aep-effect-item.active {
+  background: rgba(255, 102, 0, 0.15);
+  color: #ff7a1a;
+}
+
+.aep-effect-item.active i {
+  transform: scale(1.1);
+}
+
+.aep-toggles-section {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aep-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.aep-toggle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.aep-toggle-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+}
+
+.aep-toggle-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.3;
+}
+
+.aep-capsule-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.aep-capsule-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.aep-capsule-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.aep-capsule-slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.aep-capsule-switch input:checked + .aep-capsule-slider {
+  background-color: #ff7a1a;
+}
+
+.aep-capsule-switch input:checked + .aep-capsule-slider::before {
+  transform: translateX(20px);
+  background-color: #fff;
+}
+
+.aep-effect-hint {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  min-height: 18px;
+}
