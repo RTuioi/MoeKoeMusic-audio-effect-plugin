@@ -797,14 +797,15 @@
   function onClimaxEnded() {
     log('高潮片段结束，准备切歌');
     setHint('高潮结束，切换下一首...');
-    // 重置 lastAppliedSongHash，允许单曲循环时重新应用高潮
+     // 保存当前歌曲hash用于切歌后的比较，再重置 lastAppliedSongHash
+    var currentHash = lastAppliedSongHash;
     lastAppliedSongHash = null;
     // 延迟切歌，避免与主应用的自动切歌冲突
     setTimeout(function () {
       // 检查歌曲是否已经切换（主应用可能已自动切歌）
       var song = getCurrentSong();
       var newHash = song ? (song.hash || song.playHash) : null;
-      if (newHash && newHash !== lastAppliedSongHash) {
+      if (newHash && newHash !== currentHash) {
         log('主应用已自动切歌，无需重复切歌');
         return;
       }
@@ -814,7 +815,7 @@
         setTimeout(function () {
           var song2 = getCurrentSong();
           var hash2 = song2 ? (song2.hash || song2.playHash) : null;
-          if (hash2 && hash2 !== lastAppliedSongHash) return;
+          if (hash2 && hash2 !== currentHash) return;
           skipToNextSong();
         }, 1000);
       }
